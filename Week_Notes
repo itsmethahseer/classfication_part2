@@ -1,0 +1,181 @@
+-->Evaluation Matrix in Classification:
+        In classification, an evaluation matrix is a way to measure the performance of a machine learning algorithm. It is used to assess how well the algorithm is able to correctly classify different data points into their respective classes.
+        
+                    The evaluation matrix typically consists of several metrics, including precision, recall, F1-score, and accuracy. These metrics help to measure the algorithm's ability to correctly classify data points in terms of true positives, true negatives, false positives, and false negatives.
+                    
+   Precision = True Positives / (True Positives + False Positives)
+
+   Recall = True Positives / (True Positives + False Negatives)
+                   True Positives (TP): the number of positive instances that are correctly classified as positive
+                   False Positives (FP): the number of negative instances that are incorrectly classified as positive
+                   False Negatives (FN): the number of positive instances that are incorrectly classified as negative.
+    Another evaluation matrix is AUC(Area under the curve) : which plots graph between True Positive rate and False Positive rate.And calculate the Area under the curve. Greater the area under the curve greater will be accuracy. And we draw a y=x line if any points is below that line then our model is not accurate.
+    
+    Another evaluation matrix is logloss which define by,
+                logloss = (-1/N)* sigma[(y*log(y_pred))+((1-y)*log(1-y_pred))]
+                where N-total number of samples
+                      y-actual output 0 and 1
+                      y_pred-Predicted probabilities between 0 and 1.
+              Lesser the value of logloss greater will be the accuracy.If it's value is zero then our model is Perfect.
+      There is another evaluation matrix is called as Confusion matrix.This matrix is represents the Number of correct and incorrect predictions of our model .This matrix is represented by  predicted take in columns and Actual Truth in rows.We can calculate accuracy,precision and recall from this matrix.
+
+
+
+Hyperparameter tuning is an essential step in the process of building machine learning models. It involves adjusting the model's hyperparameters to optimize its performance on the training data. Here are some hyperparameter tuning techniques and their respective hyperparameters for different algorithms:
+
+1. Random Search: It involves randomly selecting hyperparameters within specified ranges. It is computationally cheaper than grid search and is useful when the number of hyperparameters is high.
+
+    a. Decision Trees: Maximum depth, minimum sample split, minimum sample leaf, criterion, splitter.
+
+    b. Random Forest: n_estimators, max_features, max_depth, min_samples_split, min_samples_leaf.
+
+    c. Gradient Boosting: n_estimators, learning_rate, max_depth, subsample, min_samples_split, min_samples_leaf.
+
+2. Grid Search: It involves exhaustively searching over all the combinations of hyperparameters in a specified range. It is computationally expensive but is useful when the number of hyperparameters is small.
+
+    a. Support Vector Machines (SVM): C, kernel, gamma.
+
+    b. k-Nearest Neighbors (k-NN): n_neighbors, weights, algorithm.
+
+    c. Neural Networks: number of hidden layers, number of neurons in each layer, activation function, learning rate, momentum.
+
+3. Bayesian Optimization: It involves building a probabilistic model of the objective function and finding the hyperparameters that maximize it.
+
+    a. XGBoost: eta, gamma, max_depth, min_child_weight, subsample, colsample_bytree.
+
+    b. LightGBM: learning_rate, max_depth, min_child_weight, subsample, colsample_bytree, num_leaves.
+
+    c. CatBoost: learning_rate, depth, l2_leaf_reg, bagging_temperature, random_strength.
+
+4. Genetic Algorithms: It involves simulating the process of natural selection to find the optimal set of hyperparameters.
+
+-->Types of decision trees:
+        
+There are mainly two types of decision trees:
+
+Classification trees: These are used when the target variable is categorical or discrete, such as predicting whether a person will buy a car or not based on their demographic characteristics, or predicting the type of flower based on its features such as petal length and width.
+
+Regression trees: These are used when the target variable is continuous, such as predicting the price of a house based on its size, location, and other features. Regression trees are built by recursively partitioning the data into subsets based on the values of the input variables and minimizing the variance within each subset.
+
+
+
+ID3 (Iterative Dichotomiser 3) is a classic algorithm used for building decision trees in machine learning. It was developed by J. Ross Quinlan in 1986 and is based on the concept of information entropy and information gain. ID3 is a top-down, greedy algorithm that recursively partitions the data based on the most informative attribute at each node.
+
+The ID3 algorithm works as follows:
+
+1. Calculate the entropy of the dataset, which measures the amount of uncertainty or randomness in the target variable.
+
+2. For each attribute in the dataset, calculate the information gain, which measures the reduction in entropy achieved by splitting the data based on that attribute.
+
+3. Select the attribute with the highest information gain as the splitting attribute at the current node.
+
+4. Partition the data based on the values of the splitting attribute and create a child node for each partition.
+
+5. Recursively apply steps 1-4 on each child node until a stopping criterion is reached, such as reaching a maximum depth, or when all the instances in a node belong to the same class.
+
+ID3 is a simple and effective algorithm for building decision trees, but it has some limitations, such as:
+
+1. It only considers the most informative attribute at each node, which may lead to suboptimal splits and overfitting.
+
+2. It is sensitive to noisy or irrelevant attributes, which may mislead the splitting process.
+
+3. It does not handle missing data or continuous variables well, and may require pre-processing steps such as discretization.
+
+Despite these limitations, ID3 and its variants such as C4.5 and C5.0, have been widely used and extended in many applications and research fields.
+
+
+
+
+-->CART (Classification And Regression Trees) is a popular algorithm used for building decision trees in data science. It was developed by Breiman et al. in 1984 and can be used for both classification and regression problems.
+
+CART is a recursive partitioning algorithm that works by repeatedly splitting the data into subsets based on the values of the input variables, and building a tree structure that predicts the target variable based on the majority class or the average value of the instances in each leaf node.
+
+The CART algorithm works as follows:
+
+1. Choose the input variable that best splits the data into two groups, based on some measure of impurity such as Gini Index or Entropy.
+
+2. Split the data based on the chosen variable, creating two child nodes.
+
+3. Repeat steps 1-2 recursively on each child node until a stopping criterion is reached, such as reaching a maximum depth, or when all the instances in a node belong to the same class or have the same value of the target variable.
+
+4. For a classification problem, assign the majority class of the instances in each leaf node as the predicted class for new instances. For a regression problem, assign the average value of the instances in each leaf node as the predicted value for new instances.
+
+CART has several advantages over other decision tree algorithms, such as:
+
+1. It handles both categorical and continuous input variables.
+
+2. It can handle missing data by using surrogate variables to replace the missing values.
+
+3. It can handle imbalanced datasets by using class weights to balance the importance of the classes.
+
+4. It can be used for feature selection and variable importance ranking by measuring the contribution of each variable to the tree structure.
+
+However, CART also has some limitations, such as:
+
+1. It tends to overfit the data if not properly regularized, leading to poor generalization performance.
+
+2. It can be sensitive to small changes in the data or the input variables, leading to different trees or results.
+
+3. It may require some hyperparameter tuning, such as the maximum depth or the minimum number of instances per leaf node, to achieve optimal performance.
+
+Despite these limitations, CART and its variants such as Random Forest and Gradient Boosting, have been widely used in various fields of data science, such as finance, healthcare, marketing, and natural language processing.
+
+
+
+
+
+-->Random Forest and Support Vector Machine (SVM) are two popular machine learning algorithms, each with its own set of advantages and disadvantages. Here are some disadvantages of each algorithm:
+
+Disadvantages of Random Forest:
+
+1. Random Forest can be computationally expensive and slow for large datasets with many features.
+
+2. The interpretability of Random Forest is limited, as it is difficult to visualize and understand the decision-making process of multiple decision trees combined.
+
+3. Random Forest may overfit the data if not properly regularized, leading to poor generalization performance.
+
+4. Random Forest may not perform well on imbalanced datasets, as it tends to favor the majority class.
+
+Disadvantages of Support Vector Machine:
+
+1. SVM can be sensitive to the choice of kernel function and its parameters, which may require some trial and error to achieve optimal performance.
+
+2. SVM may not perform well on datasets with many noisy or irrelevant features, as it may overfit the data or have poor generalization performance.
+
+3. SVM can be computationally expensive and slow for large datasets, as it requires solving a quadratic optimization problem.
+
+4. The interpretability of SVM is limited, as it is difficult to visualize and understand the decision boundary and support vectors in high-dimensional feature spaces.
+
+5. SVM may require tuning of some hyperparameters, such as the regularization parameter C or the kernel width gamma, to achieve optimal performance.
+
+Despite these limitations, Random Forest and SVM are powerful algorithms that have been widely used in various fields of machine learning, such as computer vision, natural language processing, and bioinformatics. Choosing the right algorithm depends on the specific problem and the characteristics of the data.
+
+
+-->Parametric algorithms are a class of machine learning algorithms that make certain assumptions about the underlying distribution of the data. They model the data using a fixed set of parameters, such as mean and variance, and estimate those parameters from the training data. Once the parameters are estimated, the model can be used to make predictions on new data points. Some examples of parametric algorithms include:
+
+1. Linear Regression: Linear regression is a simple and widely used algorithm for regression problems. It assumes that the relationship between the input variables and the output variable is linear, and estimates the coefficients of the linear equation using the least squares method.
+
+2. Logistic Regression: Logistic regression is a popular algorithm for binary classification problems. It models the probability of the positive class using a logistic function, and estimates the coefficients of the logistic function using maximum likelihood estimation.
+
+3. Gaussian Naive Bayes: Gaussian Naive Bayes is a variant of Naive Bayes that assumes that the input features are normally distributed. It estimates the mean and variance of each feature for each class, and uses Bayes' theorem to compute the class probabilities.
+
+4. Linear Discriminant Analysis (LDA): LDA is a classification algorithm that assumes that the input features are normally distributed and have a common covariance matrix for all classes. It estimates the mean and covariance matrix of each class, and computes a linear discriminant function that separates the different classes.
+
+Parametric algorithms are often used in situations where the underlying data distribution is known or can be reasonably assumed, and where there are clear assumptions about the functional form of the data. They are often simpler and faster to train and can perform well with small to moderate-sized datasets. However, they may not perform well if the assumptions about the data are not met, or if the data is highly non-linear or complex.
+
+
+
+
+-->Non-parametric algorithms are a class of machine learning algorithms that do not make assumptions about the underlying distribution of the data. In contrast to parametric algorithms, which assume that the data has a certain functional form, non-parametric algorithms are more flexible and can handle a wider range of data distributions. Some examples of non-parametric algorithms include:
+
+1. k-Nearest Neighbors (k-NN): k-NN is a simple and intuitive algorithm that classifies new data points by finding the k nearest data points in the training set and assigning the majority class label of those neighbors to the new point.
+
+2. Decision Trees: Decision trees are a popular algorithm for classification and regression problems. They partition the data space into a hierarchical set of rules based on the feature values, and make predictions based on the most common class or average value within each leaf node.
+
+3. Random Forest: Random Forest is an ensemble learning algorithm that combines multiple decision trees to improve the accuracy and robustness of the predictions. It randomly selects subsets of the features and samples from the training data to build multiple decision trees, and then averages the predictions to make the final prediction.
+
+4. Support Vector Machines (SVMs): SVMs are a powerful algorithm for classification and regression problems. They map the data to a high-dimensional feature space and find a hyperplane that maximally separates the different classes or predicts the target variable.
+
+5. Naive Bayes: Naive Bayes is a simple and efficient algorithm for classification problems. It models the joint probability distribution of the features and class labels using Bayes' theorem, and makes predictions based on the maximum likelihood estimate of the class conditional probabilities.
+
+Non-parametric algorithms are often used in situations where the underlying data distribution is unknown or complex, or where there are no clear assumptions about the functional form of the data. However, they may require more data to achieve good performance, and can be computationally expensive for large datasets.
