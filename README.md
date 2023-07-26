@@ -1,7 +1,5 @@
 # Machine Learning Repository
 
-![Project Image](https://www.example.com/project_image.jpg)
-
 ## Overview
 
 Welcome to the Machine Learning Repository! This repository is a collection of notebooks showcasing various machine learning projects and implementations. Whether you are a machine learning enthusiast or a data science practitioner, this repository offers a diverse set of projects to explore and learn from.
